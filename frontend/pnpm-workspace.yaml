@@ -1,0 +1,5 @@
+# ~/.npmrc の ignore-scripts=true により各依存のビルド可否を明示する必要がある。
+# sharp(画像最適化) / unrs-resolver(リゾルバ) はネイティブビルド無しでも動作するため false。
+allowBuilds:
+  sharp: false
+  unrs-resolver: false
