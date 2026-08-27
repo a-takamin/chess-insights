@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # --- base: pnpm を用意（ローカルの ~/.npmrc には依存せず公開レジストリを使う） ---
-FROM node:22-bookworm-slim AS base
+FROM node:24-bookworm-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN npm install -g pnpm@11.1.3
@@ -21,7 +21,7 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN pnpm build
 
 # --- runtime: standalone サーバのみを含む軽量イメージ ---
-FROM node:22-bookworm-slim AS runtime
+FROM node:24-bookworm-slim@sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
