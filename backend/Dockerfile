@@ -13,7 +13,7 @@ COPY src ./src
 RUN ./gradlew --no-daemon clean bootJar
 
 # --- runtime stage: JRE だけの軽量イメージ ---
-FROM eclipse-temurin:17-jre AS runtime
+FROM eclipse-temurin:25-jre@sha256:fcd7fd7b387f94bb2ac461478a7436ad8e349924c374ea8313919624dceae636 AS runtime
 WORKDIR /app
 
 # 非 root ユーザーで実行する
